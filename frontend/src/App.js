@@ -1,10 +1,11 @@
 import './App.scss'
 import { HeaderNavegacao } from './components/HeaderNavegacao';
+import { MobileContainer } from './components/MobileContainer';
 
 export const App = () => {
   return (
-    <>
-      <HeaderNavegacao/>
-    </>
+    <MobileContainer>
+      <HeaderNavegacao />
+    </MobileContainer>
   );
 }

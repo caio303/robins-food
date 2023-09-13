@@ -1,0 +1,12 @@
+#header-navegacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+
+    &__carrinho {
+        position: absolute;
+        right: 10%;
+        top: 30%;
+    }
+}

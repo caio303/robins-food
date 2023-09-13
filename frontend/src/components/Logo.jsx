@@ -1,4 +1,4 @@
-import robinsLogo from '../assets/images/robins-logo.png'
+import robinsLogo from '../assets/images/robins-logo.svg'
 import './Logo.scss'
 
 export const Logo = () => {
