@@ -2,7 +2,7 @@
 
 ## Run frontend
 
-``cd /frontend && npm start``
+``cd /frontend && npm install && npm start``
 
 ## Run backend
 
