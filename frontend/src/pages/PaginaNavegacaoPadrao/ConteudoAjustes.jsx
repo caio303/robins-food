@@ -1,0 +1,1 @@
+export const ConteudoAjustes = () => (<div>ConteudoAjustes</div>)

@@ -1,0 +1,1 @@
+export const ConteudoPerfil = () => (<div>ConteudoPerfil</div>)
