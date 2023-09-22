@@ -1,8 +1,8 @@
-import { HeaderNavegacao } from "../../components/HeaderNavegacao";
+import { Link } from "../../../node_modules/react-router-dom/dist/index";
 
 export const PaginaCarrinho = () => (
     <>
-        <HeaderNavegacao />
+        <Link to={'/inicio'}>Voltar</Link>
         <div>CARRINHO</div>
     </>
 )

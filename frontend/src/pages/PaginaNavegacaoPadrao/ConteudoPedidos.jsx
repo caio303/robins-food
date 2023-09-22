@@ -1,1 +1,1 @@
-export const ConteudoPedidos = () => (<div>ConteudoPedidos</div>)
+export const ConteudoPedidos = () => (<main>ConteudoPedidos</main>)

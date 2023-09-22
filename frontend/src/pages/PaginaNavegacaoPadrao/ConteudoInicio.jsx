@@ -1,1 +1,1 @@
-export const ConteudoInicio = () => (<div>ConteudoInicio</div>)
+export const ConteudoInicio = () => (<main>ConteudoInicio</main>)

@@ -1,0 +1,10 @@
+@import '../variables';
+
+footer#footer-navegacao {
+    display: flex;
+    flex-direction: row;
+    font-weight: $font-extra-light;
+    justify-content: space-evenly;
+    margin: 1rem 0;
+    position: relative;
+}
