@@ -1,0 +1,22 @@
+@import '../variables';
+
+.item-footer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 2rem;
+
+    &__icon-container {
+        align-items: center;
+        background-color: $cinza3;
+        border-radius: 50%;
+        display: flex;
+        font-size: 1.4rem;
+        height: 2.8rem;
+        justify-content: center;
+        width: 2.8rem;
+
+
+    }
+}

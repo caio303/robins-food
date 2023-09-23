@@ -11,3 +11,13 @@ html, body {
     margin: 0;
     width: 100%;
 }
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:visited {
+        text-decoration: none;
+        color: inherit;
+    }
+}

@@ -1,11 +1,12 @@
-import { Link } from '../../node_modules/react-router-dom/dist/index'
+import { faGear, faHouse, faTicket, faUser } from '../../node_modules/@fortawesome/free-solid-svg-icons/index'
+import { ItemFooter } from './ItemFooter'
 import './FooterNavegacao.scss'
 
 export const FooterNavegacao = () => (
     <footer id="footer-navegacao">
-        <Link to='/inicio'>Inicio</Link>
-        <Link to='/pedidos'>Pedidos</Link>
-        <Link to='/ajustes'>Ajustes</Link>
-        <Link to='/perfil'>Perfil</Link>
+        <ItemFooter icon={faHouse} text={'Inicio'} uri={'/inicio'}/>
+        <ItemFooter icon={faTicket} text={'Pedidos'} uri={'/pedidos'}/>
+        <ItemFooter icon={faGear} text={'Ajustes'} uri={'/ajustes'}/>
+        <ItemFooter icon={faUser} text={'Perfil'} uri={'/perfil'}/>
     </footer>
 )
