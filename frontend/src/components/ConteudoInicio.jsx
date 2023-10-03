@@ -8,19 +8,19 @@ export const ConteudoInicio = () => {
     const [restaurantes, setRestaurantes] = useState([
         {
             id: 1,
-            nome: 'Padaria do Zé',
-            imagem: padariaBase64,
-            horarioAbertura: '08:00',
-            horarioFechamento: '19:00',
-            distancia: '1.1 km'
-        },
-        {
-            id: 2,
             nome: 'Don Giovanni',
             imagem: pizzariaBase64,
             horarioAbertura: '06:00',
             horarioFechamento: '22:00',
-            distancia: '1.6 km'
+            distancia: '1.6'
+        },
+        {
+            id: 2,
+            nome: 'Padaria do Zé',
+            imagem: padariaBase64,
+            horarioAbertura: '08:00',
+            horarioFechamento: '19:00',
+            distancia: '1.1'
         },
         {
             id: 3,
@@ -28,7 +28,7 @@ export const ConteudoInicio = () => {
             imagem: pizzariaBase64,
             horarioAbertura: '16:00',
             horarioFechamento: '23:00',
-            distancia: '3 km'
+            distancia: '3'
         },
     ])
 

@@ -1,3 +1,26 @@
+@import '../variables.scss';
+
 .card-restaurante {
-    padding: 20px;
+    background-color: $cinza3;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    max-height: 30vh;
+    width: 90%;
+
+    &__imagem {
+        height: 15vh;
+        object-fit: cover;
+        user-select: none;
+        width: 100%;
+    }
+
+    &__dados {
+        padding: 10px;
+        &__nome {}
+        &__horarioAbertura {}
+        &__horarioFechamento {}
+        &__distancia {}
+    }
 }

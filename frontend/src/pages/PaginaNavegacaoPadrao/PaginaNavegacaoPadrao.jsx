@@ -4,6 +4,7 @@ import { HeaderNavegacao } from "../../components/HeaderNavegacao";
 import { ConteudoAjustes } from "../../components/ConteudoAjustes";
 import { ConteudoInicio } from "../../components/ConteudoInicio";
 import { ConteudoPedidos } from "../../components/ConteudoPedidos";
+import { ConteudoRestaurante } from "../../components/ConteudoRestaurante";
 import { ConteudoPerfil } from "../../components/ConteudoPerfil";
 import './PaginaNavegacaoPadrao.scss'
 
@@ -15,6 +16,7 @@ export const PaginaNavegacaoPadrao = () => (
             <Route path='/pedidos' element={<ConteudoPedidos />}/>
             <Route path='/ajustes' element={<ConteudoAjustes />}/>
             <Route path='/perfil' element={<ConteudoPerfil />}/>
+            <Route path='/restaurante/*' element={<ConteudoRestaurante />}/>
             <Route path='/*' element={<Navigate to='/inicio' />}/>
         </Routes>
         <FooterNavegacao />

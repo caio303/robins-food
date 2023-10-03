@@ -1,1 +1,1 @@
-export const CardPedido = () => <div>CardPedido</div>
+export const CardPedido = ({pedido}) => <div>{pedido.nome} - R$ {pedido.valor}</div>
