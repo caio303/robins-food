@@ -1,1 +1,0 @@
-export const ConteudoInicio = () => (<main>ConteudoInicio</main>)

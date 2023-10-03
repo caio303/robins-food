@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from "../../../node_modules/react-router-dom/dist/index";
 import { FooterNavegacao } from "../../components/FooterNavegacao";
 import { HeaderNavegacao } from "../../components/HeaderNavegacao";
-import { ConteudoAjustes } from "./ConteudoAjustes";
-import { ConteudoInicio } from "./ConteudoInicio";
-import { ConteudoPedidos } from "./ConteudoPedidos";
-import { ConteudoPerfil } from "./ConteudoPerfil";
+import { ConteudoAjustes } from "../../components/ConteudoAjustes";
+import { ConteudoInicio } from "../../components/ConteudoInicio";
+import { ConteudoPedidos } from "../../components/ConteudoPedidos";
+import { ConteudoPerfil } from "../../components/ConteudoPerfil";
 import './PaginaNavegacaoPadrao.scss'
 
 export const PaginaNavegacaoPadrao = () => (
