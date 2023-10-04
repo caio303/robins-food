@@ -2,7 +2,7 @@
 
 .card-restaurante {
     background-color: $cinza3;
-    border-radius: 2px;
+    border-radius: $border-radius-padrao;
     display: flex;
     flex-direction: column;
     margin: 15px 0;
@@ -10,6 +10,7 @@
     width: 90%;
 
     &__imagem {
+        border-radius: $border-radius-padrao $border-radius-padrao 0 0;
         height: 15vh;
         object-fit: cover;
         user-select: none;

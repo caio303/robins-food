@@ -6,8 +6,7 @@ export const CardRestaurante = ({restaurante}) => (
         <img className="card-restaurante__imagem" alt={`Imagem de ${restaurante.nome}`} src={ restaurante.imagem } />
         <div className="card-restaurante__dados">
             <div className="card-restaurante__dados__nome">{ restaurante.nome }</div> 
-            <div className="card-restaurante__dados__horarioAbertura">{ restaurante.horarioAbertura }</div> 
-            <div className="card-restaurante__dados__horarioFechamento">{ restaurante.horarioFechamento }</div> 
+            <div className="card-restaurante__dados__horarios">{ `${restaurante.horarioAbertura} às ${restaurante.horarioFechamento}` }</div> 
             <div className="card-restaurante__dados__distancia">{ restaurante.distancia + ' km' }</div> 
         </div>
     </Link>

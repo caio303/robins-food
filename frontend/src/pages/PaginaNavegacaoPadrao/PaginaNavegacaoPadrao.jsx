@@ -16,7 +16,7 @@ export const PaginaNavegacaoPadrao = () => (
             <Route path='/pedidos' element={<ConteudoPedidos />}/>
             <Route path='/ajustes' element={<ConteudoAjustes />}/>
             <Route path='/perfil' element={<ConteudoPerfil />}/>
-            <Route path='/restaurante/*' element={<ConteudoRestaurante />}/>
+            <Route path='/restaurante/:idRestaurante' element={<ConteudoRestaurante />}/>
             <Route path='/*' element={<Navigate to='/inicio' />}/>
         </Routes>
         <FooterNavegacao />

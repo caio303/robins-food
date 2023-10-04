@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { CardRestaurante } from "./CardRestaurante"
-import { padariaBase64, pizzariaBase64 } from "../assets/images/base64exemplos"
+import { churrascariaBase64, padariaBase64, pizzariaBase64 } from "../assets/images/base64exemplos"
 import './ConteudoInicio.scss'
 
 export const ConteudoInicio = () => {
     // useEffect pra popular restaurantes com a API
+    // eslint-disable-next-line
     const [restaurantes, setRestaurantes] = useState([
         {
             id: 1,
@@ -24,12 +25,20 @@ export const ConteudoInicio = () => {
         },
         {
             id: 3,
+            nome: 'Churrascaria',
+            imagem: churrascariaBase64,
+            horarioAbertura: '16:00',
+            horarioFechamento: '23:00',
+            distancia: '2.2'
+        },
+        {
+            id: 4,
             nome: 'Tapiocabana',
             imagem: pizzariaBase64,
             horarioAbertura: '16:00',
             horarioFechamento: '23:00',
             distancia: '3'
-        },
+        }
     ])
 
     return (
