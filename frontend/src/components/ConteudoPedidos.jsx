@@ -5,7 +5,7 @@ export const ConteudoPedidos = () => {
     const [pedidos, setPedidos] = useState([]);
 
     useEffect(() => {
-        setPedidos(api.usuarios.getTodosPedidosDoUsuario())
+        setPedidos(api.pedidos.getPedidosDoUsuario())
     },[])
 
     return pedidos.map(pedido => (

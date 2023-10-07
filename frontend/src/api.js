@@ -86,9 +86,11 @@ export const api = {
                 telefone: '(83) 91234-5678',
                 endereco: 'R. Qualquer, 123',
             }
-        },
+        }
+    },
 
-        getTodosPedidosDoUsuario: (idUsuario = ID_USUARIO_PADRAO_MVP) => {
+    pedidos: {
+        getPedidosDoUsuario: (idUsuario = ID_USUARIO_PADRAO_MVP) => {
             return [
                 {
                     restaurante: 'Padaria Unipê',
@@ -100,6 +102,6 @@ export const api = {
             ]
         },
 
-        getPedidosUsuarioNoRestaurante: (idUsuario = ID_USUARIO_PADRAO_MVP, idRestaurante) => '// TODO: V2 do app'
+        getPedidosDoUsuarioNoRestaurante: (idUsuario = ID_USUARIO_PADRAO_MVP, idRestaurante) => '// TODO: V2 do app'
     }
 }
