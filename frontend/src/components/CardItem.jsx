@@ -1,1 +1,3 @@
-export const CardItem = ({pedido}) => <div>{pedido.nome} - R$ {pedido.valor}</div>
+export const CardItem = ({titulo, valor, subtitulos}) => {
+    return <div>{titulo} <sub>{subtitulos.map(st=>st)}</sub> R$ {valor}</div>
+}

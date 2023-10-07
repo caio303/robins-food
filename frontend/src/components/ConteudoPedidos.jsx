@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../api";
+import { CardItem } from "./CardItem";
 
 export const ConteudoPedidos = () => {
     const [pedidos, setPedidos] = useState([]);
@@ -9,8 +10,9 @@ export const ConteudoPedidos = () => {
     },[])
 
     return pedidos.map(pedido => (
-        <div>
-            { pedido.restaurante } - <sub>{ pedido.enderecoEntrega } - { pedido.data }</sub> - {pedido.valorTotal }
-        </div>
+        <CardItem 
+            titulo={pedido.restaurante} 
+            valor={pedido.valorTotal} 
+            subtitulos={[ pedido.enderecoEntrega, pedido.data ]} />
     ))
 }

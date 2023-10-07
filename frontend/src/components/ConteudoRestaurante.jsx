@@ -16,9 +16,13 @@ export const ConteudoRestaurante = () => {
         <main id="conteudo-inicio">
             <div id="conteudo-inicio__barra-pesquisa">---------------------- R{idRestaurante} ----------------------</div>
             <div id="conteudo-inicio__lista-restaurantes">
-                {restaurante.catalogo && restaurante.catalogo.map(item => {
-                    return <CardItem pedido={item} key={item.id} />
-                })}
+                {restaurante.catalogo && restaurante.catalogo.map(item =>
+                    <CardItem
+                        titulo={item.nome} 
+                        valor={item.preco}
+                        subtitulos={item.detalhes}
+                        key={item.id} />
+                )}
             </div>
         </main>
     )
