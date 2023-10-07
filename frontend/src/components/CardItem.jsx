@@ -1,0 +1,1 @@
+export const CardItem = ({pedido}) => <div>{pedido.nome} - R$ {pedido.valor}</div>

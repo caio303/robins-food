@@ -1,0 +1,29 @@
+usuario padrão (id: 1)
+requests ao back:
+	* pedidos um usuario
+	* todos os restaurantes (sem itens)
+	* info de um restaurante (com itens)
+	* info de um usuario
+
+tabelas:
+	usuario (mvp: padrao-1)
+	endereco (não incluso no mvp, seria na v2 - fk usuario)
+	restaurante
+	itens_restaurante (fk restaurante_id)
+	pedido (fk restaurante_id + usuario_id)
+
+perfis: // TODO
+	dev (local)
+	prod (netlify/heroku)
+
+mvn spring-boot:run -Dspring-boot.run.profiles=prod
+java -jar -Dspring.profiles.active=prod banco...
+
+telas:
+	login (nao incluso no mvp)
+	inicio
+	pedidos
+	perfil
+	ajustes
+	carrinho
+	catalogo restaurante

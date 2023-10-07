@@ -1,37 +1,23 @@
-import { useState } from "react"
-import { pizzariaBase64 } from "../assets/images/base64exemplos"
+import { useEffect, useState } from "react"
 import './ConteudoInicio.scss'
-import { CardPedido } from "./CardPedido"
+import { CardItem } from "./CardItem"
 import { useParams } from "../../node_modules/react-router-dom/dist/index"
+import { api } from "../api"
 
 export const ConteudoRestaurante = () => {
+    const [restaurante, setRestaurante] = useState({})
     const { idRestaurante } = useParams()
-    
-    // useEffect pra popular o restaurante com a API
-    // eslint-disable-next-line
-    const [restaurante, setRestaurante] = useState({
-            id: 1,
-            nome: 'Don Giovanni',
-            imagem: pizzariaBase64,
-            horarioAbertura: '06:00',
-            horarioFechamento: '22:00',
-            distancia: '1.6',
-            itens: [
-                {
-                    id: 12,
-                    nome: 'Bolo',
-                    valor: '24,90',
-                    detalhes: [ 'Bolo de laranja', '04/11/2004' ]
-                }
-            ]
-        })
+
+    useEffect(()=> {
+        setRestaurante(api.restaurantes.getRestaurante(idRestaurante, true))
+    },[ idRestaurante ])
 
     return (
         <main id="conteudo-inicio">
             <div id="conteudo-inicio__barra-pesquisa">---------------------- R{idRestaurante} ----------------------</div>
             <div id="conteudo-inicio__lista-restaurantes">
-                {restaurante.itens.map(item => {
-                    return <CardPedido pedido={item} key={item.id} />
+                {restaurante.catalogo && restaurante.catalogo.map(item => {
+                    return <CardItem pedido={item} key={item.id} />
                 })}
             </div>
         </main>
