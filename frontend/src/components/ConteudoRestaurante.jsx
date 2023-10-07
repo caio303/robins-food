@@ -19,7 +19,7 @@ export const ConteudoRestaurante = () => {
                 {restaurante.catalogo && restaurante.catalogo.map(item =>
                     <CardItem
                         titulo={item.nome} 
-                        valor={item.preco}
+                        valor={item.valor}
                         subtitulos={item.detalhes}
                         key={item.id} />
                 )}
