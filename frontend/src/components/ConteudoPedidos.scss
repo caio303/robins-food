@@ -1,0 +1,15 @@
+@import '../variables';
+
+#conteudo-pedidos {
+    height: 44rem;
+    padding-top: 2rem;
+    width: 100%;
+
+    &__lista-pedidos {
+        margin-top: .8rem;
+        overflow-y: scroll;
+        height: 38rem;
+        
+        &::-webkit-scrollbar { width: 0; }
+    }
+}

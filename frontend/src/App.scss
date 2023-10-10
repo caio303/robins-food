@@ -22,3 +22,9 @@ a {
         color: inherit;
     }
 }
+
+main[id^=conteudo] {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

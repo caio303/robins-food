@@ -1,5 +1,43 @@
-// TODOOOOO
+@import '../variables.scss';
 
+.card-item {
+    background-color: $cinza3;
+    border-radius: $border-radius-padrao;
+    display: grid;
+    grid-template:
+        'titulo titulo valor'
+        'subtitulos subtitulos valor'
+        'subtitulos subtitulos valor';
+    grid-template-columns: auto auto 9.6rem;
+    margin: $margin-between-cards 0;
+    min-height: 6rem;
+    max-height: 8rem;
+    width: $card-width;
 
-//    /\
-//    ||
+    &__titulo {
+        font-size: 1.15rem;
+        padding: 1.15rem 1rem 0 1rem;
+        grid-area: titulo;
+    }
+    
+    &__subtitulos {
+        color: $cinza1;
+        font-size: .9rem;
+        font-weight: $font-light;
+        margin-top: -.75rem;
+        padding: 0 1.15rem;
+        grid-area: subtitulos;
+    }
+    
+    &__valor {
+        align-items: center;
+        background-color: $verde;
+        border-radius: 0 $border-radius-padrao $border-radius-padrao 0;
+        color: $branco;
+        display: flex;
+        font-weight: $font-semibold;
+        grid-area: valor;
+        height: 100%;
+        justify-content: center;
+    }
+}

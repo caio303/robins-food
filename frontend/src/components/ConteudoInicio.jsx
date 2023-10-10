@@ -12,7 +12,6 @@ export const ConteudoInicio = () => {
 
     return (
         <main id="conteudo-inicio">
-            <div id="conteudo-inicio__barra-pesquisa">---------------------- Search ----------------------</div>
             <div id="conteudo-inicio__lista-restaurantes">
                 {restaurantes.map(restaurante => {
                     return <CardRestaurante restaurante={restaurante} />

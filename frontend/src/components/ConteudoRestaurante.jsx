@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react"
-import './ConteudoInicio.scss'
 import { CardItem } from "./CardItem"
 import { useParams } from "../../node_modules/react-router-dom/dist/index"
 import { api } from "../api"
+import './ConteudoRestaurante.scss'
 
 export const ConteudoRestaurante = () => {
-    const [restaurante, setRestaurante] = useState({})
-    const { idRestaurante } = useParams()
+    const [restaurante, setRestaurante] = useState({ nome: 'loading' })
+    let { idRestaurante } = useParams()
+    idRestaurante = idRestaurante.replaceAll(/\D/g,'')
 
     useEffect(()=> {
         setRestaurante(api.restaurantes.getRestaurante(idRestaurante, true))
+        console.log(restaurante)
     },[ idRestaurante ])
 
     return (
-        <main id="conteudo-inicio">
-            <div id="conteudo-inicio__barra-pesquisa">---------------------- R{idRestaurante} ----------------------</div>
-            <div id="conteudo-inicio__lista-restaurantes">
-                {restaurante.catalogo && restaurante.catalogo.map(item =>
+        <main id="conteudo-restaurante">
+            <div id="conteudo-restaurante__painel">
+                <h2>{ restaurante && restaurante.nome }</h2>    
+            </div>
+            <div id="conteudo-restaurante__catalogo">
+                { restaurante && restaurante.catalogo && restaurante.catalogo.map(item =>
                     <CardItem
                         titulo={item.nome} 
                         valor={item.valor}

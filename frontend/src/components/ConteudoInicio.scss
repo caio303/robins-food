@@ -1,37 +1,14 @@
 @import '../variables';
 
 #conteudo-inicio {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-
     &__lista-restaurantes {
         align-items: center;
         display: flex;
         flex-direction: column;
-        max-height: 75vh;
+        height: 44rem;
         overflow-y: scroll;
         width: 100%;
 
-
-        /* width */
-        &::-webkit-scrollbar {
-            width: 0;
-        }
-
-        /* Track */
-        &::-webkit-scrollbar-track {
-            background: $branco;
-        }
-
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: $cinza3;
-        }
-
-        /* Handle on hover */
-        &::-webkit-scrollbar-thumb:hover {
-            background: $cinza2;
-        }
+        &::-webkit-scrollbar { width: 0; }
     }
 }

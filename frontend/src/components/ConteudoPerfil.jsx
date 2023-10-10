@@ -1,1 +1,1 @@
-export const ConteudoPerfil = () => (<main>ConteudoPerfil</main>)
+export const ConteudoPerfil = () => (<main id="conteudo-perfil">ConteudoPerfil</main>)

@@ -11,16 +11,10 @@ import { ID_USUARIO_PADRAO_MVP } from "./constants"
 export const api = {
     restaurantes: {
         getRestaurante: (idRestaurante, incluirCatalogo) => {
-            let restaurante = {
-                id: idRestaurante,
-                nome: 'Don Giovanni',
-                imagem: pizzariaBase64,
-                horarioAbertura: '06:00',
-                horarioFechamento: '22:00',
-                distancia: '1.6'
-            }
+            console.log(`Buscando restaurante: ${idRestaurante}`)
+            let restaurante = api.restaurantes.getTodosRestaurantes().find(restaurante => restaurante.id == idRestaurante)
 
-            if (incluirCatalogo) 
+            if (!!incluirCatalogo) 
                 restaurante.catalogo = [
                     {
                         id: 12,
@@ -35,6 +29,7 @@ export const api = {
                         detalhes: [ 'te da asas' ]
                     }
                 ]
+
 
             return restaurante
         },
@@ -77,6 +72,7 @@ export const api = {
             ]
         },
     },
+
     usuarios: {
         getInfoUsuario: (idUsuario = ID_USUARIO_PADRAO_MVP) => {
             return {
@@ -97,6 +93,55 @@ export const api = {
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
                     valorTotal: '49,80',
+                    itens: [ { id: 3, quantidade: 2 } ]
+                },
+                {
+                    restaurante: 'Tapiocabana',
+                    enderecoEntrega: 'R. Qualquer, 123',
+                    data: '14/09/2023',
+                    valorTotal: '19,80',
+                    itens: [ { id: 3, quantidade: 2 } ]
+                },
+                {
+                    restaurante: 'Tapiocabana',
+                    enderecoEntrega: 'R. Qualquer, 123',
+                    data: '14/09/2023',
+                    valorTotal: '19,80',
+                    itens: [ { id: 3, quantidade: 2 } ]
+                },
+                {
+                    restaurante: 'Tapiocabana',
+                    enderecoEntrega: 'R. Qualquer, 123',
+                    data: '14/09/2023',
+                    valorTotal: '19,80',
+                    itens: [ { id: 3, quantidade: 2 } ]
+                },
+                {
+                    restaurante: 'Tapiocabana',
+                    enderecoEntrega: 'R. Qualquer, 123',
+                    data: '14/09/2023',
+                    valorTotal: '19,80',
+                    itens: [ { id: 3, quantidade: 2 } ]
+                },
+                {
+                    restaurante: 'Tapiocabana',
+                    enderecoEntrega: 'R. Qualquer, 123',
+                    data: '14/09/2023',
+                    valorTotal: '34,80',
+                    itens: [ { id: 3, quantidade: 2 } ]
+                },
+                {
+                    restaurante: 'Tapiocabana',
+                    enderecoEntrega: 'R. Qualquer, 123',
+                    data: '14/09/2023',
+                    valorTotal: '69,80',
+                    itens: [ { id: 3, quantidade: 2 } ]
+                },
+                {
+                    restaurante: 'Tapiocabana',
+                    enderecoEntrega: 'R. Qualquer, 123',
+                    data: '14/09/2023',
+                    valorTotal: '19,80',
                     itens: [ { id: 3, quantidade: 2 } ]
                 }
             ]
