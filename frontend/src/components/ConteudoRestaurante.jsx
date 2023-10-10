@@ -5,7 +5,7 @@ import { api } from "../api"
 import './ConteudoRestaurante.scss'
 
 export const ConteudoRestaurante = () => {
-    const [restaurante, setRestaurante] = useState({ nome: 'loading' })
+    const [restaurante, setRestaurante] = useState({ nome: '', catalogo: [], imagem: '', horarioAbertura: '', horarioFechamento: '', distancia: '' })
     let { idRestaurante } = useParams()
     idRestaurante = idRestaurante.replaceAll(/\D/g,'')
 
@@ -18,16 +18,19 @@ export const ConteudoRestaurante = () => {
             { restaurante ? (
                 <>
                     <div id="conteudo-restaurante__painel">
-                        <h2>{restaurante.nome }</h2>    
+                        <img id="conteudo-restaurante__painel__img" src={restaurante.imagem} alt={`Imagem do restaurante ${restaurante.nome}`}/>
+                        <h2 id="conteudo-restaurante__painel__titulo">{restaurante.nome }</h2>
                     </div>
                     <div id="conteudo-restaurante__catalogo">
-                        {restaurante.catalogo && restaurante.catalogo.map(item =>
+                        {restaurante.catalogo && ( restaurante.catalogo.length === 0 ? (
+                            <div>Nenhum item no catálogo :/</div>
+                        ) : restaurante.catalogo.map(item => (
                             <CardItem
                                 titulo={item.nome} 
                                 valor={item.valor}
                                 subtitulos={item.detalhes}
                                 key={item.id} />
-                        )}
+                        )))}
                     </div>
                 </>
             ) : (

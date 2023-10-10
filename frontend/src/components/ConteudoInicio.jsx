@@ -14,7 +14,7 @@ export const ConteudoInicio = () => {
         <main id="conteudo-inicio">
             <div id="conteudo-inicio__lista-restaurantes">
                 {restaurantes.map(restaurante => {
-                    return <CardRestaurante restaurante={restaurante} />
+                    return <CardRestaurante restaurante={restaurante} key={restaurante.id} />
                 })}
             </div>
         </main>
