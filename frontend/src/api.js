@@ -11,10 +11,9 @@ import { ID_USUARIO_PADRAO_MVP } from "./constants"
 export const api = {
     restaurantes: {
         getRestaurante: (idRestaurante, incluirCatalogo) => {
-            console.log(`Buscando restaurante: ${idRestaurante}`)
             let restaurante = api.restaurantes.getTodosRestaurantes().find(restaurante => restaurante.id == idRestaurante)
 
-            if (!!incluirCatalogo) 
+            if (!!incluirCatalogo && restaurante) 
                 restaurante.catalogo = [
                     {
                         id: 12,

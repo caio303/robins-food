@@ -12,4 +12,19 @@
         overflow-y: scroll;   
         &::-webkit-scrollbar { width: 0; }
     }
+
+    &__nao-encontrado {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        height: 70vh;
+        width: 100%;
+
+        a#voltar-inicio {
+            color: $verde;
+            font-weight: $font-semibold;
+            text-decoration: underline;
+        }
+    }
 }
