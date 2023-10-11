@@ -7,24 +7,53 @@
 
     &__painel {
         display: grid;
-        grid-template: '. foto nome nome . editar .';
-        width: 100%;
+        font-size: 1.5rem;
+        grid-template: 
+            'foto nome nome nome . . editar';
+        height: 3rem;
+        width: $card-width;
+
+        &>* {
+            align-items: center;
+            display: flex;
+        }
 
         &__foto {
+            aspect-ratio: .4 / .4;
+            background-color: $cinza3;
+            border-radius: 50%;
             grid-area: foto;
+            justify-content: center;
         }
+        
         &__nome {
+            font-weight: $font-semibold;
             grid-area: nome;
+            margin-left: .5rem;
             
         }
+
         &__editar {
+            font-size: 1.2rem;
             grid-area: editar;
+            justify-content: flex-end;
+            margin-right: .5rem;
+
+            *:first-child {
+                background-color: $verde;
+                border-radius: 1.5 * $border-radius-padrao;
+                color: $branco;
+                padding: .65rem;
+            }
         }
     }
 
     &__dados {
         background-color: $cinza3;
         border-radius: $border-radius-padrao;
+        display: flex;
+        flex-direction: column;
+        gap: .6rem;
         margin-top: 1.5rem;
         padding: 1.5rem;
         width: $card-width;

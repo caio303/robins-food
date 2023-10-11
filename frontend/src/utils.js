@@ -9,3 +9,9 @@ export const getTelefoneComMascara = (telefone) => {
     const replace = '($1) $2-$3'
     return telefone.replace(regex, replace)
 }
+
+export const getCepComMascara = (cep) => {
+    const regex = /(\d{5})(\d{3})/
+    const replace = '$1-$2'
+    return cep.replace(regex, replace)
+}
