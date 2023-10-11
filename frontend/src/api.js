@@ -77,8 +77,9 @@ export const api = {
             return {
                 id: idUsuario,
                 nome: 'Oliver Queen',
+                cpf: '12365432100',
                 email: 'oliverqueen@gmail.com',
-                telefone: '(83) 91234-5678',
+                telefone: '83912345678',
                 endereco: 'R. Qualquer, 123',
             }
         }
