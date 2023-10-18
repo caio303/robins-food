@@ -17,12 +17,14 @@ export const api = {
                 restaurante.catalogo = [
                     {
                         id: 12,
+                        idRestaurante,
                         nome: 'Bolo',
                         valor: '24,90',
                         detalhes: [ 'Bolo de laranja' ]
                     },
                     {
                         id: 10,
+                        idRestaurante,
                         nome: 'Redbull',
                         valor: '9,80',
                         detalhes: [ 'te da asas' ]
@@ -33,7 +35,6 @@ export const api = {
             return restaurante
         },
 
-        // não inclui seus catálogos
         getTodosRestaurantes: () => {
             return [
                 {

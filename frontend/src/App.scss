@@ -23,8 +23,31 @@ a {
     }
 }
 
-main[id^=conteudo] {
+div[id^=pagina-] {
+    display: grid;
+    grid-template: 
+        'header'
+        'main'
+        'main'
+        'main'
+        'footer';
+    height: 100vh;
+}
+
+header[id^=header-] {
+    grid-area: header;
+    height: 12vh;
+}
+
+main[id^=conteudo-] {
     align-items: center;
     display: flex;
     flex-direction: column;
+    grid-area: main;
+    height: 76vh;
+}
+
+footer[id^=footer-] {
+    grid-area: footer;
+    height: 12vh;
 }

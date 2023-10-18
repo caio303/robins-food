@@ -1,8 +1,12 @@
-import { Link } from "../../../node_modules/react-router-dom/dist/index";
+import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
 
-export const PaginaCarrinho = () => (
-    <>
-        <Link to={'/inicio'}>Voltar</Link>
-        <div>CARRINHO</div>
-    </>
-)
+export const PaginaCarrinho = () => {
+    const navigate = useNavigate()
+    
+    return (
+        <>
+            <div onClick={() => navigate(-1)}>Voltar</div>
+            <div>CARRINHO</div>
+        </>
+    )
+}

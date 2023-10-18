@@ -12,9 +12,9 @@ export const ConteudoPedidos = () => {
 
     return (
         <main id="conteudo-pedidos">
-            <div id="container-pedidos">
+            <div id="conteudo-pedidos__container">
                 <h2>Seus pedidos</h2>
-                <div id="conteudo-pedidos__lista-pedidos">
+                <div id="conteudo-pedidos__container__lista-pedidos">
                     {pedidos.map(pedido => (
                         <CardItem
                             titulo={pedido.restaurante}

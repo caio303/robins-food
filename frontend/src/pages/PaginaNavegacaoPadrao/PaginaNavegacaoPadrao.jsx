@@ -6,10 +6,9 @@ import { ConteudoInicio } from "../../components/ConteudoInicio";
 import { ConteudoPedidos } from "../../components/ConteudoPedidos";
 import { ConteudoRestaurante } from "../../components/ConteudoRestaurante";
 import { ConteudoPerfil } from "../../components/ConteudoPerfil";
-import './PaginaNavegacaoPadrao.scss'
 
 export const PaginaNavegacaoPadrao = () => (
-    <div id="nav-padrao">
+    <div id="pagina-nav-padrao">
         <HeaderNavegacao />
         <Routes>
             <Route path='/inicio' element={<ConteudoInicio />}/>

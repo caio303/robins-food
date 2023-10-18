@@ -5,18 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBasketShopping } from '@fortawesome/free-solid-svg-icons'
 import { Logo } from "./Logo"
 import './HeaderNavegacao.scss'
-import { useNavigate } from "../../node_modules/react-router-dom/dist/index"
+import { Link } from "../../node_modules/react-router-dom/dist/index"
 
-export const HeaderNavegacao = () => {
-    const navigate = useNavigate()
-    const navigateToCarrinho = () => navigate('carrinho')
-    return (
-        <header id="header-navegacao">
-            <Logo />
+export const HeaderNavegacao = () => (
+    <header id="header-navegacao">
+        <Logo />
+        <Link to={'/carrinho'}>
             <FontAwesomeIcon
                 id="header-navegacao__carrinho"
-                icon={faBasketShopping} 
-                onClick={navigateToCarrinho}/>
-        </header>
-    )
-}
+                icon={faBasketShopping} />
+        </Link>
+    </header>
+)

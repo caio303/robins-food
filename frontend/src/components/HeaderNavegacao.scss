@@ -1,6 +1,7 @@
 @import '../variables';
 
 #header-navegacao {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -13,6 +14,6 @@
         font-size: 1.2rem;
         position: absolute;
         right: 10%;
-        top: 32%;
+        top: 45%;
     }
 }
