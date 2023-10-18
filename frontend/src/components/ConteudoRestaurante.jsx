@@ -3,15 +3,20 @@ import { CardItem } from "./CardItem"
 import { Link, useParams } from "../../node_modules/react-router-dom/dist/index"
 import { api } from "../api"
 import './ConteudoRestaurante.scss'
+import { useDispatch } from "../../node_modules/react-redux/es/exports"
+import { actions } from "../actions/carrinho.actions"
 
 export const ConteudoRestaurante = () => {
     const [restaurante, setRestaurante] = useState({ nome: '', catalogo: [], imagem: '', horarioAbertura: '', horarioFechamento: '', distancia: '' })
     let { idRestaurante } = useParams()
+    const dispatch = useDispatch()
     idRestaurante = idRestaurante.replaceAll(/\D/g,'')
 
     useEffect(()=> {
         setRestaurante(api.restaurantes.getRestaurante(idRestaurante, true))
     },[ idRestaurante ])
+
+    const adicionarItemAoCarrinho = (item) => dispatch(actions.aditionarItem(item))
 
     return (
         <main id="conteudo-restaurante">
@@ -29,6 +34,8 @@ export const ConteudoRestaurante = () => {
                                 titulo={item.nome} 
                                 valor={item.valor}
                                 subtitulos={item.detalhes}
+                                onClick={() => adicionarItemAoCarrinho(item)}
+                                title={'Adicionar ao carrinho'}
                                 key={item.id} />
                         )))}
                     </div>

@@ -23,6 +23,10 @@ a {
     }
 }
 
+.clicavel {
+    cursor: pointer;
+}
+
 div[id^=pagina-] {
     display: grid;
     grid-template: 

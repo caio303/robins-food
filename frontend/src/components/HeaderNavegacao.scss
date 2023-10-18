@@ -11,9 +11,21 @@
     &__carrinho {
         color: $verde;
         cursor: pointer;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         position: absolute;
         right: 10%;
-        top: 45%;
+        top: 40%;
+    }
+    
+    .badge:after {
+        content: attr(title);
+        font-size: 1rem;
+        color: #fff;
+        background: $preto;
+        border-radius:50%;
+        padding: 0 5px;
+        position: absolute;
+        right: 6%;
+        top: 33%;
     }
 }
