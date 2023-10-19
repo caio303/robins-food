@@ -7,6 +7,8 @@ const INITIAL_STATE = {
     }
 }
 
+const KEY_CARRINHO_LOCAL_STORAGE = 'carrinho'
+
 export const reducers = (state = INITIAL_STATE, action) => {
     switch (action.type) { // TODO
         case actionTypes.ADICIONAR_ITEM_CARRINHO:
@@ -15,6 +17,8 @@ export const reducers = (state = INITIAL_STATE, action) => {
             return removerItem(state, action.payload)
         case actionTypes.LIMPAR_CARRINHO:
             return { ...INITIAL_STATE }
+        case actionTypes.BUSCAR_LOCAL_STORAGE_CARRINHO:
+            return buscarDoLocalStorage()
         default:
             return state;
     }
@@ -28,7 +32,11 @@ const adicionarItem = (state, item) => {
 
     const novoItem = { ...item, quantidade }
 
-    return { ...state, carrinho: { restauranteId: item.restauranteId, itens: [ ...carrinho.itens.filter(i => i.id !== item.id), novoItem]} }
+    const novoStateCarrinho = { ...state, carrinho: { restauranteId: item.restauranteId, itens: [ ...carrinho.itens.filter(i => i.id !== item.id), novoItem]} }
+    
+    localStorage.setItem(KEY_CARRINHO_LOCAL_STORAGE, JSON.stringify(novoStateCarrinho))
+    
+    return novoStateCarrinho
 }
 
 const removerItem = (state, itemId) => {
@@ -49,7 +57,8 @@ const removerItem = (state, itemId) => {
     return { ...state, carrinho: { ...carrinho, itens: [ ...novaLista ] } }
 }
 
+const buscarDoLocalStorage = () => {
+    const carrinhoSalvo = JSON.parse(localStorage.getItem(KEY_CARRINHO_LOCAL_STORAGE))
 
-
-
-
+    return !!carrinhoSalvo ? carrinhoSalvo : INITIAL_STATE
+}

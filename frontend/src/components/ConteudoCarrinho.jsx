@@ -10,8 +10,6 @@ export const ConteudoCarrinho = () => {
     const restaurantes = useSelector(state => state.restauranteReducers.restaurantes)
     const restaurante = restaurantes.find(res=> res.id === carrinho.restauranteId)
 
-    console.log(restaurantes.map(res=>res.id), restaurante, carrinho.restauranteId)
-
     const removerItemDoCarrinho = (itemId) => dispatch(carrinhoActions.removerItem(itemId))
 
     const calcularValorTotal = () => {
