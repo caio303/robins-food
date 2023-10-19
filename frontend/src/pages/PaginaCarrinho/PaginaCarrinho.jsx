@@ -19,7 +19,7 @@ export const PaginaCarrinho = () => {
 
     return (
         <>
-            <a onClick={() => navigate(-1)}>Voltar</a>
+            <div onClick={() => navigate(-1)}>Voltar</div>
             <div>CARRINHO</div>
             <div>{carrinho.restauranteId}</div>
              {carrinho.itens.map(item => (

@@ -17,12 +17,11 @@ export const getCepComMascara = (cep) => {
 }
 
 export const getValorEmReais = (valor) => {
-    if (Array.isArray(valor)) {
+    if (Array.isArray(valor))
         if (valor.length === 0)
             valor = 0
         else
             valor = valor.reduce((accum,curr) => accum + curr,0)
-    }
         
     return `${valor.toFixed(2)}`.replace('.',',')
 }
