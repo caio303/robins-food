@@ -19,9 +19,10 @@ export const ConteudoInicio = () => {
     return (
         <main id="conteudo-inicio">
             <div id="conteudo-inicio__lista-restaurantes">
-                {restaurantes.map(restaurante => {
-                    return <CardRestaurante restaurante={restaurante} key={restaurante.id} />
-                })}
+                {restaurantes.length < 1 
+                    ? <div>Nenhum restaurante encontrado, tente mais tarde!</div>
+                    : restaurantes.map(restaurante => (<CardRestaurante restaurante={restaurante} key={restaurante.id} />) ) 
+                }
             </div>
         </main>
     )
