@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { CardRestaurante } from "./CardRestaurante"
 import './ConteudoInicio.scss'
 import { api } from "../api"
+import { useSelector } from "react-redux"
+import { useDispatch } from "../../node_modules/react-redux/es/exports"
+import { actions } from "../actions/restaurante.actions"
 
 export const ConteudoInicio = () => {
-    const [restaurantes, setRestaurantes] = useState([])
+    const dispatch = useDispatch()
+    const restaurantes = useSelector(state => state.restauranteReducers.restaurantes)
     
     useEffect(() => {
-        setRestaurantes(api.restaurantes.getTodosRestaurantes())
+        dispatch(
+            actions.salvarRestaurantesCarregados( api.restaurantes.getTodosRestaurantes() )
+        )// eslint-disable-next-line
     }, [])
 
     return (

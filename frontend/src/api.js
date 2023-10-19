@@ -10,21 +10,21 @@ import { ID_USUARIO_PADRAO_MVP } from "./constants"
 
 export const api = {
     restaurantes: {
-        getRestaurante: (idRestaurante, incluirCatalogo) => {
-            let restaurante = api.restaurantes.getTodosRestaurantes().find(restaurante => restaurante.id === parseInt(idRestaurante))
-
+        getRestaurante: (restauranteId, incluirCatalogo) => {
+            let restaurante = api.restaurantes.getTodosRestaurantes().find(restaurante => restaurante.id === parseInt(restauranteId))
+            restauranteId = parseInt(restauranteId)
             if (!!incluirCatalogo && restaurante) 
                 restaurante.catalogo = [
                     {
                         id: 12,
-                        idRestaurante,
+                        restauranteId,
                         nome: 'Bolo',
                         valor: 24.90,
                         detalhes: [ 'Bolo de laranja' ]
                     },
                     {
                         id: 10,
-                        idRestaurante,
+                        restauranteId,
                         nome: 'Redbull',
                         valor: 9.8,
                         detalhes: [ 'te da asas' ]

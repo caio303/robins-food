@@ -3,21 +3,32 @@ import { CardItem } from "./CardItem"
 import { Link, useParams } from "../../node_modules/react-router-dom/dist/index"
 import { api } from "../api"
 import './ConteudoRestaurante.scss'
-import { useDispatch } from "../../node_modules/react-redux/es/exports"
-import { actions } from "../actions/carrinho.actions"
+import { useDispatch, useSelector } from "../../node_modules/react-redux/es/exports"
+import { actions as carrinhoActions } from "../actions/carrinho.actions"
+import { actions as restauranteActions } from "../actions/restaurante.actions"
 import { getValorEmReais } from "../utils"
 
 export const ConteudoRestaurante = () => {
     const [restaurante, setRestaurante] = useState({ nome: '', catalogo: [], imagem: '', horarioAbertura: '', horarioFechamento: '', distancia: '' })
-    let { idRestaurante } = useParams()
     const dispatch = useDispatch()
-    idRestaurante = idRestaurante.replaceAll(/\D/g,'')
+    const idRestauranteCarrinho = useSelector(state => state.carrinhoReducers.carrinho.restauranteId)
+    const restaurantesCarregados = useSelector(state => state.restauranteReducers.restaurantes)
+    const { idRestaurante } = useParams()
+    const idRestauranteParam = parseInt(idRestaurante.replaceAll(/\D/g,''))
 
     useEffect(()=> {
-        setRestaurante(api.restaurantes.getRestaurante(idRestaurante, true))
-    },[ idRestaurante ])
+        setRestaurante(api.restaurantes.getRestaurante(idRestauranteParam, true))
+    },[ idRestauranteParam ])
 
-    const adicionarItemAoCarrinho = (item) => dispatch(actions.aditionarItem(item))
+    const adicionarItemAoCarrinho = (item) => {
+        if (item.restauranteId !== idRestauranteCarrinho)
+            dispatch(carrinhoActions.limparCarrinho())
+
+        if (restaurantesCarregados.indexOf(res => res.id === idRestauranteParam) === -1)
+            dispatch(restauranteActions.salvarRestaurantesCarregados([ ...restaurantesCarregados, restaurante ]))
+
+        dispatch(carrinhoActions.aditionarItem(item))
+    }
 
     return (
         <main id="conteudo-restaurante">
