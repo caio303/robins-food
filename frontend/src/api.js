@@ -19,14 +19,14 @@ export const api = {
                         id: 12,
                         idRestaurante,
                         nome: 'Bolo',
-                        valor: '24,90',
+                        valor: 24.90,
                         detalhes: [ 'Bolo de laranja' ]
                     },
                     {
                         id: 10,
                         idRestaurante,
                         nome: 'Redbull',
-                        valor: '9,80',
+                        valor: 9.8,
                         detalhes: [ 'te da asas' ]
                     }
                 ]
@@ -91,59 +91,67 @@ export const api = {
         getPedidosDoUsuario: (idUsuario = ID_USUARIO_PADRAO_MVP) => {
             return [
                 {
+                    id: 1,
                     restaurante: 'Padaria Unipê',
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
-                    valorTotal: '49,80',
+                    valorTotal: 49.8,
                     itens: [ { id: 3, quantidade: 2 } ]
                 },
                 {
+                    id: 2,
                     restaurante: 'Tapiocabana',
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
-                    valorTotal: '19,80',
+                    valorTotal: 19.8,
                     itens: [ { id: 3, quantidade: 2 } ]
                 },
                 {
+                    id: 3,
                     restaurante: 'Tapiocabana',
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
-                    valorTotal: '19,80',
+                    valorTotal: 19.80,
                     itens: [ { id: 3, quantidade: 2 } ]
                 },
                 {
+                    id: 4,
                     restaurante: 'Tapiocabana',
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
-                    valorTotal: '19,80',
+                    valorTotal: 19.80,
                     itens: [ { id: 3, quantidade: 2 } ]
                 },
                 {
+                    id: 5,
                     restaurante: 'Tapiocabana',
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
-                    valorTotal: '19,80',
+                    valorTotal: 19.80,
                     itens: [ { id: 3, quantidade: 2 } ]
                 },
                 {
+                    id: 6,
                     restaurante: 'Tapiocabana',
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
-                    valorTotal: '34,80',
+                    valorTotal: 34.80,
                     itens: [ { id: 3, quantidade: 2 } ]
                 },
                 {
+                    id: 7,
                     restaurante: 'Tapiocabana',
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
-                    valorTotal: '69,80',
+                    valorTotal: 69.80,
                     itens: [ { id: 3, quantidade: 2 } ]
                 },
                 {
+                    id: 8,
                     restaurante: 'Tapiocabana',
                     enderecoEntrega: 'R. Qualquer, 123',
                     data: '14/09/2023',
-                    valorTotal: '19,80',
+                    valorTotal: 19.8,
                     itens: [ { id: 3, quantidade: 2 } ]
                 }
             ]

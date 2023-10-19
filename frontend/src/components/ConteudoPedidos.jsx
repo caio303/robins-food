@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api";
 import { CardItem } from "./CardItem";
 import './ConteudoPedidos.scss'
+import { getValorEmReais } from "../utils";
 
 export const ConteudoPedidos = () => {
     const [pedidos, setPedidos] = useState([]);
@@ -18,7 +19,7 @@ export const ConteudoPedidos = () => {
                     {pedidos.map(pedido => (
                         <CardItem
                             titulo={pedido.restaurante}
-                            valor={pedido.valorTotal}
+                            valor={getValorEmReais(pedido.valorTotal)}
                             subtitulos={[ pedido.enderecoEntrega, pedido.data ]}
                             key={pedido.id} />
                     ))}

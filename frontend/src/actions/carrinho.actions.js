@@ -1,4 +1,8 @@
-import { actionTypes } from "../constants";
+export const actionTypes = {
+    ADICIONAR_ITEM_CARRINHO: 'ADICIONAR_ITEM_CARRINHO',
+    REMOVER_ITEM_CARRINHO: 'REMOVER_ITEM_CARRINHO',
+    LIMPAR_CARRINHO: 'LIMPAR_CARRINHO',
+}
 
 export const actions = {
     aditionarItem: item => ({

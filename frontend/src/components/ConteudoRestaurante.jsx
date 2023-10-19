@@ -5,6 +5,7 @@ import { api } from "../api"
 import './ConteudoRestaurante.scss'
 import { useDispatch } from "../../node_modules/react-redux/es/exports"
 import { actions } from "../actions/carrinho.actions"
+import { getValorEmReais } from "../utils"
 
 export const ConteudoRestaurante = () => {
     const [restaurante, setRestaurante] = useState({ nome: '', catalogo: [], imagem: '', horarioAbertura: '', horarioFechamento: '', distancia: '' })
@@ -32,7 +33,7 @@ export const ConteudoRestaurante = () => {
                         ) : restaurante.catalogo.map(item => (
                             <CardItem
                                 titulo={item.nome} 
-                                valor={item.valor}
+                                valor={getValorEmReais(item.valor)}
                                 subtitulos={item.detalhes}
                                 onClick={() => adicionarItemAoCarrinho(item)}
                                 title={'Adicionar ao carrinho'}

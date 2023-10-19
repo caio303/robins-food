@@ -1,4 +1,4 @@
-import { actionTypes } from "../constants";
+import { actionTypes } from "../actions/carrinho.actions";
 
 const INITIAL_STATE = {
     carrinho: {
@@ -30,6 +30,7 @@ const adicionarItem = (state, item) => {
     const novoItem = {
         id: item.id,
         nome: item.nome,
+        valor: item.valor,
         quantidade
     }
 
