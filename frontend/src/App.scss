@@ -27,6 +27,22 @@ a {
     cursor: pointer;
 }
 
+
+.item-nao-encontrado {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    height: 44rem;
+    width: 100%;
+
+    a#voltar-inicio {
+        color: $verde;
+        font-weight: $font-semibold;
+        text-decoration: underline;
+    }
+}
+
 div[id^=pagina-] {
     display: grid;
     grid-template: 
@@ -52,6 +68,7 @@ main[id^=conteudo-] {
 }
 
 footer[id^=footer-] {
+    border-top: 1px solid $cinza3;
     grid-area: footer;
     height: 12vh;
 }

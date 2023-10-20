@@ -53,7 +53,7 @@ export const ConteudoRestaurante = () => {
                     </div>
                 </>
             ) : (
-                <div id="conteudo-restaurante__nao-encontrado">
+                <div id="item-nao-encontrado">
                     <div>Restaurante não encontrado :/</div>
                     <Link to={'/inicio'} id="voltar-inicio">Voltar ao início!</Link>
                 </div>
