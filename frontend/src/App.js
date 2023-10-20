@@ -9,6 +9,7 @@ import { actions } from './actions/carrinho.actions';
 export const App = () => {
   const dispatch = useDispatch()
   dispatch(actions.buscarCarrinhoDoLocalStorage())
+  window.scrollTo(0, 1);
   return (
     <MobileContainer>
       <Routes>
