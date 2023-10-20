@@ -1,12 +1,32 @@
 import { faGear, faHouse, faTicket, faUser } from '../../node_modules/@fortawesome/free-solid-svg-icons/index'
-import { ItemFooter } from './ItemFooter'
+import { ItemFooterNavegacao } from './ItemFooterNavegacao'
 import './FooterNavegacao.scss'
+
+const opcoesFooterNavegacao = [
+    {
+        icon: faHouse,
+        text: 'Inicio',
+        uri: '/inicio'
+    },
+    {
+        icon: faTicket,
+        text: 'Pedidos',
+        uri: '/pedidos'
+    },
+    {
+        icon: faGear,
+        text: 'Ajustes',
+        uri: '/ajustes'
+    },
+    {
+        icon: faUser,
+        text: 'Perfil',
+        uri: '/perfil'
+    },
+]
 
 export const FooterNavegacao = () => (
     <footer id="footer-navegacao">
-        <ItemFooter icon={faHouse} text={'Inicio'} uri={'/inicio'}/>
-        <ItemFooter icon={faTicket} text={'Pedidos'} uri={'/pedidos'}/>
-        <ItemFooter icon={faGear} text={'Ajustes'} uri={'/ajustes'}/>
-        <ItemFooter icon={faUser} text={'Perfil'} uri={'/perfil'}/>
+        {opcoesFooterNavegacao.map(({icon, text, uri}) => <ItemFooterNavegacao icon={icon} text={text} uri={uri}/> )}
     </footer>
 )
