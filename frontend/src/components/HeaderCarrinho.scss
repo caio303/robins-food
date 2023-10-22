@@ -1,0 +1,15 @@
+@import '../variables';
+
+#header-carrinho {    
+    * {
+        z-index: 2;
+    }
+
+    &__nome-restaurante {
+        background-color: $verde;
+    }
+    &__img-restaurante {
+        position: relative;
+        z-index: 1;
+    }
+}

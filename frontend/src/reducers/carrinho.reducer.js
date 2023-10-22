@@ -2,7 +2,14 @@ import { actionTypes } from "../actions/carrinho.actions";
 
 const INITIAL_STATE = {
     carrinho: {
-        restauranteId: undefined,
+        restaurante: {
+            id: -1,
+            nome: '',
+            imagem: '',
+            horarioAbertura: '00:00',
+            horarioFechamento: '00:00',
+            distancia: '00'
+        },
         itens: []
     }
 }
@@ -24,7 +31,7 @@ export const reducers = (state = INITIAL_STATE, action) => {
     }
 }
 
-const adicionarItem = (state, item) => {
+const adicionarItem = (state, { item, restaurante }) => {
     const carrinho = JSON.parse(JSON.stringify(state.carrinho))
     
     const itemNoCarrinho = carrinho.itens.find(i => i.id === item.id)
@@ -32,11 +39,8 @@ const adicionarItem = (state, item) => {
 
     const novoItem = { ...item, quantidade }
 
-    const novoStateCarrinho = { ...state, carrinho: { restauranteId: item.restauranteId, itens: [ ...carrinho.itens.filter(i => i.id !== item.id), novoItem]} }
-    
-    localStorage.setItem(KEY_CARRINHO_LOCAL_STORAGE, JSON.stringify(novoStateCarrinho))
-    
-    return novoStateCarrinho
+    const novoStateCarrinho = { ...state, carrinho: { restaurante: (carrinho.restaurante || restaurante), itens: [ ...carrinho.itens.filter(i => i.id !== item.id), novoItem]} }
+    return atualizarLocalStorageERetornar(novoStateCarrinho)
 }
 
 const removerItem = (state, itemId) => {
@@ -54,11 +58,22 @@ const removerItem = (state, itemId) => {
         return novaLista.push(item)
     })
 
-    return { ...state, carrinho: { ...carrinho, itens: [ ...novaLista ] } }
+    const novoStateCarrinho = (
+        novaLista.length > 0 
+            ? { ...state, carrinho: { ...carrinho, itens: [ ...novaLista ] } }
+            : INITIAL_STATE
+        )
+
+    return atualizarLocalStorageERetornar(novoStateCarrinho)
 }
 
 const buscarDoLocalStorage = () => {
     const carrinhoSalvo = JSON.parse(localStorage.getItem(KEY_CARRINHO_LOCAL_STORAGE))
 
     return !!carrinhoSalvo ? carrinhoSalvo : INITIAL_STATE
+}
+
+const atualizarLocalStorageERetornar = (carrinho) => {
+    localStorage.setItem(KEY_CARRINHO_LOCAL_STORAGE, JSON.stringify(carrinho))
+    return carrinho
 }

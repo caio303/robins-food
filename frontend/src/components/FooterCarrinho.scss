@@ -1,0 +1,13 @@
+@import '../variables';
+
+footer#footer-carrinho {
+    padding: $padding-in-footers;
+    width: 100%;
+
+    #confirmar-pedido {
+        display: block;
+        width: 100%;
+    }
+
+    p { float:right; }
+}

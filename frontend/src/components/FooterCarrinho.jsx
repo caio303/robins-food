@@ -1,4 +1,5 @@
 import { getValorEmReais } from "../utils"
+import './FooterCarrinho.scss'
 
 export const FooterCarrinho = ({ listaItens }) => {
     
@@ -10,7 +11,10 @@ export const FooterCarrinho = ({ listaItens }) => {
     
     return (
         <footer id="footer-carrinho">
-            Valor total: R$ {calcularValorTotal()}
+            <p>Valor total: R$ {calcularValorTotal()}</p>
+            <button id="confirmar-pedido">
+                CONFIRMAR PEDIDO
+            </button>
         </footer>
     )
 }

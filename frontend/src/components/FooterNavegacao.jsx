@@ -27,6 +27,6 @@ const opcoesFooterNavegacao = [
 
 export const FooterNavegacao = () => (
     <footer id="footer-navegacao">
-        {opcoesFooterNavegacao.map(({icon, text, uri}) => <ItemFooterNavegacao icon={icon} text={text} uri={uri}/> )}
+        {opcoesFooterNavegacao.map(({icon, text, uri}) => <ItemFooterNavegacao icon={icon} text={text} uri={uri} key={uri} /> )}
     </footer>
 )

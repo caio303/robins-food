@@ -5,14 +5,13 @@ import { HeaderCarrinho } from "../../components/HeaderCarrinho";
 
 export const PaginaCarrinho = () => {
     const carrinho = useSelector(state => state.carrinhoReducers.carrinho)
-    const restaurantes = useSelector(state => state.restauranteReducers.restaurantes)
-    const restaurante = restaurantes.find(res=> res.id === carrinho.restauranteId)
+    const restaurante = carrinho.restaurante
 
-    return ( 
-        <main id="pagina-carrinho">
+    return (
+        <div id="pagina-carrinho">
             <HeaderCarrinho restaurante={restaurante} />
             <ConteudoCarrinho carrinho={carrinho} />
             <FooterCarrinho listaItens={carrinho.itens} />
-        </main>
+        </div>
     )
 }

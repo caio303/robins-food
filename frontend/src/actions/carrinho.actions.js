@@ -6,9 +6,9 @@ export const actionTypes = {
 }
 
 export const actions = {
-    aditionarItem: item => ({
+    aditionarItem: itemERestaurante => ({
         type: actionTypes.ADICIONAR_ITEM_CARRINHO,
-        payload: item
+        payload: itemERestaurante
     }),
     removerItem: itemId => ({
         type: actionTypes.REMOVER_ITEM_CARRINHO,

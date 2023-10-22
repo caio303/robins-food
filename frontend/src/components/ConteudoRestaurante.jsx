@@ -11,7 +11,7 @@ import { getValorEmReais } from "../utils"
 export const ConteudoRestaurante = () => {
     const [restaurante, setRestaurante] = useState({ nome: '', catalogo: [], imagem: '', horarioAbertura: '', horarioFechamento: '', distancia: '' })
     const dispatch = useDispatch()
-    const idRestauranteCarrinho = useSelector(state => state.carrinhoReducers.carrinho.restauranteId)
+    const idRestauranteCarrinho = useSelector(state => state.carrinhoReducers.carrinho.restaurante ? state.carrinhoReducers.carrinho.restaurante.id : undefined)
     const restaurantesCarregados = useSelector(state => state.restauranteReducers.restaurantes)
     const { idRestaurante } = useParams()
     const idRestauranteParam = parseInt(idRestaurante.replaceAll(/\D/g,''))
@@ -20,14 +20,14 @@ export const ConteudoRestaurante = () => {
         setRestaurante(api.restaurantes.getRestaurante(idRestauranteParam, true))
     },[ idRestauranteParam ])
 
-    const adicionarItemAoCarrinho = (item) => {
-        if (item.restauranteId !== idRestauranteCarrinho)
+    const adicionarItemAoCarrinho = ({ item, restaurante }) => {
+        if (idRestauranteCarrinho && item.restauranteId !== idRestauranteCarrinho)
             dispatch(carrinhoActions.limparCarrinho())
 
         if (restaurantesCarregados.indexOf(res => res.id === idRestauranteParam) === -1)
             dispatch(restauranteActions.salvarRestaurantesCarregados([ ...restaurantesCarregados, restaurante ]))
 
-        dispatch(carrinhoActions.aditionarItem(item))
+        dispatch(carrinhoActions.aditionarItem({ item, restaurante }))
     }
 
     return (
@@ -46,7 +46,7 @@ export const ConteudoRestaurante = () => {
                                 titulo={item.nome} 
                                 valor={getValorEmReais(item.valor)}
                                 subtitulos={item.detalhes}
-                                onClick={() => adicionarItemAoCarrinho(item)}
+                                onClick={() => adicionarItemAoCarrinho({item, restaurante})}
                                 title={'Adicionar ao carrinho'}
                                 key={item.id} />
                         )))}
