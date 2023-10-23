@@ -1,9 +1,10 @@
 import { actionTypes } from "../actions/carrinho.actions";
+import { KEY_CARRINHO_LOCAL_STORAGE } from "../constants";
 
 const INITIAL_STATE = {
     carrinho: {
         restaurante: {
-            id: -1,
+            id: 0,
             nome: '',
             imagem: '',
             horarioAbertura: '00:00',
@@ -13,8 +14,6 @@ const INITIAL_STATE = {
         itens: []
     }
 }
-
-const KEY_CARRINHO_LOCAL_STORAGE = 'carrinho'
 
 export const reducers = (state = INITIAL_STATE, action) => {
     switch (action.type) { // TODO
@@ -39,7 +38,7 @@ const adicionarItem = (state, { item, restaurante }) => {
 
     const novoItem = { ...item, quantidade }
 
-    const novoStateCarrinho = { ...state, carrinho: { restaurante: (carrinho.restaurante || restaurante), itens: [ ...carrinho.itens.filter(i => i.id !== item.id), novoItem]} }
+    const novoStateCarrinho = { ...state, carrinho: { restaurante: (restaurante || carrinho.restaurante), itens: [ ...carrinho.itens.filter(i => i.id !== item.id), novoItem]} }
     return atualizarLocalStorageERetornar(novoStateCarrinho)
 }
 

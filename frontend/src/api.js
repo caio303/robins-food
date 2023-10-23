@@ -1,16 +1,21 @@
 import { cafeteriaBase64, churrascariaBase64, padaria2Base64, pizzariaBase64 } from "./assets/images/base64exemplos"
-import { ID_USUARIO_PADRAO_MVP } from "./constants"
+import { CONFIGURACOES_DEV, CONFIGURACOES_PRODUCAO } from "./constants"
 
-/* 
-    * pedidos um usuario
-    * todos os restaurantes (sem itens)
-    * info de um restaurante (com itens)
-    * info de um usuario
-*/
+const config = (() => {
+    switch (process.env.NODE_ENV) {
+        case 'development':
+            return CONFIGURACOES_DEV
+        case 'production':
+            return CONFIGURACOES_PRODUCAO
+        default:
+            return {}
+    }
+})()
 
 export const api = {
     restaurantes: {
         getRestaurante: (restauranteId, incluirCatalogo) => {
+            console.log(config.urlBackend)
             let restaurante = api.restaurantes.getTodosRestaurantes().find(restaurante => restaurante.id === parseInt(restauranteId))
             restauranteId = parseInt(restauranteId)
             if (!!incluirCatalogo && restaurante) 
@@ -36,6 +41,7 @@ export const api = {
         },
 
         getTodosRestaurantes: () => {
+            console.log(config.urlBackend)
             return [
                 {
                     id: 1,
@@ -74,7 +80,7 @@ export const api = {
     },
 
     usuarios: {
-        getInfoUsuario: (idUsuario = ID_USUARIO_PADRAO_MVP) => {
+        getInfoUsuario: (idUsuario = config.idUsuarioPadraoMVP) => {
             return {
                 id: idUsuario,
                 nome: 'Oliver Queen',
@@ -88,7 +94,7 @@ export const api = {
     },
 
     pedidos: {
-        getPedidosDoUsuario: (idUsuario = ID_USUARIO_PADRAO_MVP) => {
+        getPedidosDoUsuario: (idUsuario = config.idUsuarioPadraoMVP) => {
             return [
                 {
                     id: 1,
@@ -157,6 +163,6 @@ export const api = {
             ]
         },
 
-        getPedidosDoUsuarioNoRestaurante: (idUsuario = ID_USUARIO_PADRAO_MVP, idRestaurante) => '// TODO: V2 do app'
+        getPedidosDoUsuarioNoRestaurante: (idUsuario = config.idUsuarioPadraoMVP, idRestaurante) => '// TODO: V2 do app'
     }
 }
