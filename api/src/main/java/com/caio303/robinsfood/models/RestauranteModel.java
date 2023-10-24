@@ -9,7 +9,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,7 +17,7 @@ public class RestauranteModel {
 
 	private Integer id;
 	private String nome;
-	private byte[] imagem;
+	private String imagem;
 	private String horarioAbertura;
 	private String horarioFechamento;
 	private String distancia;
@@ -27,7 +26,7 @@ public class RestauranteModel {
 	
 	public RestauranteModel(CadastroRestauranteDTO cadastroDTO) {
 		this.nome = cadastroDTO.getNome();
-		this.imagem = cadastroDTO.getImagem().getBytes();
+		this.imagem = cadastroDTO.getImagem();
 		this.horarioAbertura = cadastroDTO.getHorarioAbertura();
 		this.horarioFechamento = cadastroDTO.getHorarioFechamento();
 		this.distancia = cadastroDTO.getDistancia();
@@ -44,10 +43,9 @@ public class RestauranteModel {
 		return nome;
 	}
 
-	@Lob
 	@Basic(fetch = FetchType.LAZY)
-	@Column(name = "imagem", columnDefinition = "bytea")
-	public byte[] getImagem() {
+	@Column(name = "imagem", columnDefinition = "text")
+	public String getImagem() {
 		return imagem;
 	}
 
@@ -74,7 +72,7 @@ public class RestauranteModel {
 		this.nome = nome;
 	}
 
-	public void setImagem(byte[] imagem) {
+	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
 

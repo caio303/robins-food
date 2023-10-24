@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.caio303.robinsfood.dtos.CadastroRestauranteDTO;
 import com.caio303.robinsfood.models.RestauranteModel;
@@ -24,8 +25,13 @@ public class RestauranteService {
 		return restauranteRepository.findById(id);
 	}
 	
-	public RestauranteModel cadastrarRestaurante(CadastroRestauranteDTO cadastroDTO) {
+	public void cadastrarRestaurante(CadastroRestauranteDTO cadastroDTO) {
 		var novoRestaurante = new RestauranteModel(cadastroDTO);
-		return restauranteRepository.save(novoRestaurante);
+		this.save(novoRestaurante);
+	}
+	
+	@Transactional
+	private void save(RestauranteModel s) {
+		restauranteRepository.save(s.getDistancia(), s.getHorarioAbertura(), s.getHorarioFechamento(), s.getImagem(), s.getNome());
 	}
 }
