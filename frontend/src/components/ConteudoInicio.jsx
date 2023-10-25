@@ -11,10 +11,14 @@ export const ConteudoInicio = () => {
     const restaurantes = useSelector(state => state.restauranteReducers.restaurantes)
     
     useEffect(() => {
-        dispatch(
-            actions.salvarRestaurantesCarregados( api.restaurantes.getTodosRestaurantes() )
-        )// eslint-disable-next-line
+        api.restaurantes.getTodosRestaurantes().then(rest => {
+            console.log(rest)   
+            dispatch(actions.salvarRestaurantesCarregados(rest))
+        })
+        // eslint-disable-next-line
     }, [])
+
+    useEffect(()=>{}, [ restaurantes ])
 
     return (
         <main id="conteudo-inicio">

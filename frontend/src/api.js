@@ -1,4 +1,4 @@
-import { cafeteriaBase64, churrascariaBase64, padaria2Base64, pizzariaBase64 } from "./assets/images/base64exemplos"
+import axios from "../node_modules/axios/index"
 import { CONFIGURACOES_DEV, CONFIGURACOES_PRODUCAO } from "./constants"
 
 const config = (() => {
@@ -12,37 +12,28 @@ const config = (() => {
     }
 })()
 
+const axiosConfig = {
+    baseURL: config.baseURL
+}
+
+const http = {
+    get: async (endpoint, config = {}) => (
+        await axios.get(endpoint, { ...axiosConfig, ...config }).then(res => res.data)
+    ),
+    post: async (endpoint, config = {}) => (
+        await axios.post(endpoint, { ...axiosConfig, ...config }).then(res => res.data)
+    ),
+}
+
 export const api = {
     restaurantes: {
-        getRestaurante: (restauranteId, incluirCatalogo) => {
-            console.log(config.urlBackend)
-            let restaurante = api.restaurantes.getTodosRestaurantes().find(restaurante => restaurante.id === parseInt(restauranteId))
-            restauranteId = parseInt(restauranteId)
-            if (!!incluirCatalogo && restaurante) 
-                restaurante.catalogo = [
-                    {
-                        id: 12,
-                        restauranteId,
-                        nome: 'Bolo',
-                        valor: 24.90,
-                        detalhes: [ 'Bolo de laranja' ]
-                    },
-                    {
-                        id: 10,
-                        restauranteId,
-                        nome: 'Redbull',
-                        valor: 9.8,
-                        detalhes: [ 'te da asas' ]
-                    }
-                ]
-
-
-            return restaurante
-        },
-
-        getTodosRestaurantes: () => {
-            console.log(config.urlBackend)
-            return [
+        getRestaurante: (restauranteId, incluirCatalogo) => (
+            http.get(`/restaurantes/${restauranteId}`, { params: { incluirCatalogo } })
+        ),
+        getTodosRestaurantes: async () => (
+            await http.get(`/restaurantes`)
+        )
+            /*return [
                 {
                     id: 1,
                     nome: 'Padaria do Zé',
@@ -76,7 +67,7 @@ export const api = {
                     distancia: '2.2'
                 },
             ]
-        },
+        },*/
     },
 
     usuarios: {

@@ -16,8 +16,8 @@ export const ConteudoRestaurante = () => {
     const { idRestaurante } = useParams()
     const idRestauranteParam = parseInt(idRestaurante.replaceAll(/\D/g,''))
 
-    useEffect(()=> {
-        setRestaurante(api.restaurantes.getRestaurante(idRestauranteParam, true))
+    useEffect(() => {
+        api.restaurantes.getRestaurante(idRestauranteParam, true).then(restaurante => setRestaurante(restaurante))
     },[ idRestauranteParam ])
 
     const adicionarItemAoCarrinho = ({ item, restaurante }) => {
