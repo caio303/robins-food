@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.caio303.robinsfood.dtos.CadastroItemCatalogoDTO;
 import com.caio303.robinsfood.dtos.CadastroRestauranteDTO;
 import com.caio303.robinsfood.dtos.ItemCatalogoDTO;
+import com.caio303.robinsfood.dtos.RestauranteComCatalogoDTO;
 import com.caio303.robinsfood.models.ItemRestauranteModel;
 import com.caio303.robinsfood.models.RestauranteModel;
 import com.caio303.robinsfood.services.ItemRestauranteService;
@@ -47,14 +49,19 @@ public class RestaurantesController {
 	}
 	
 	@GetMapping(value = "/{restauranteId}")
-	private ResponseEntity<RestauranteModel> getRestaurantePorId(@PathVariable("restauranteId") Integer restauranteId) {
+	private ResponseEntity<RestauranteComCatalogoDTO> getRestaurantePorId(
+			@PathVariable("restauranteId") Integer restauranteId, 
+			@RequestParam(name = "incluirCatalogo", required = false) boolean incluirCatalogo
+		) {
 		if (Objects.isNull(restauranteId))
 			return ResponseEntity.badRequest().build();
 			
 		var optRestaurante = restauranteService.getRestauranteById(restauranteId);
 		
-		if (optRestaurante.isPresent())
-			return ResponseEntity.ok(optRestaurante.get());
+		if (optRestaurante.isPresent()) {
+			var restauranteComCatalogo = restauranteService.adicionarCatalogoAoRestaurante(optRestaurante.get(), incluirCatalogo);
+			return ResponseEntity.ok(restauranteComCatalogo);
+		}
 		
 		return ResponseEntity.notFound().build();
 	}
