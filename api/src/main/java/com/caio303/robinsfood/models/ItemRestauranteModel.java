@@ -16,15 +16,15 @@ import jakarta.persistence.Table;
 public class ItemRestauranteModel {
 
 	private Integer id;
-	private Integer restauranteId;
 	private String nome;
 	private Float valor;
 	private String detalhes; // Detalhes separados por essa sequencia: ']**,**['
+	private RestauranteModel restaurante;
 	
 	public ItemRestauranteModel() { super(); }
 	
-	public ItemRestauranteModel(Integer idRestaurante, CadastroItemCatalogoDTO cadastroItemCatalogoDTO) {
-		this.restauranteId = idRestaurante;
+	public ItemRestauranteModel(RestauranteModel restaurante, CadastroItemCatalogoDTO cadastroItemCatalogoDTO) {
+		this.restaurante = restaurante;
 		this.nome = cadastroItemCatalogoDTO.getNome();
 		this.valor = cadastroItemCatalogoDTO.getValor();
 		this.detalhes = String.join("]**,**[", cadastroItemCatalogoDTO.getDetalhes());
@@ -38,8 +38,8 @@ public class ItemRestauranteModel {
 
 	@ManyToOne(targetEntity = RestauranteModel.class)
     @JoinColumn(name = "id_restaurante", referencedColumnName = "id", nullable = false)
-	public Integer getRestauranteId() {
-		return restauranteId;
+	public RestauranteModel getRestaurante() {
+		return restaurante;
 	}
 
 	@Column(name = "nome", columnDefinition = "varchar(80)", nullable = false)
@@ -60,8 +60,8 @@ public class ItemRestauranteModel {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public void setRestauranteId(Integer restauranteId) {
-		this.restauranteId = restauranteId;
+	public void setRestaurante(RestauranteModel restaurante) {
+		this.restaurante = restaurante;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;

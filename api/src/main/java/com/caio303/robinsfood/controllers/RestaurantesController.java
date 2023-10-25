@@ -2,21 +2,22 @@ package com.caio303.robinsfood.controllers;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.caio303.robinsfood.dtos.CadastroItemCatalogoDTO;
 import com.caio303.robinsfood.dtos.CadastroRestauranteDTO;
+import com.caio303.robinsfood.dtos.ItemCatalogoDTO;
 import com.caio303.robinsfood.models.ItemRestauranteModel;
 import com.caio303.robinsfood.models.RestauranteModel;
 import com.caio303.robinsfood.services.ItemRestauranteService;
@@ -43,7 +44,6 @@ public class RestaurantesController {
 	private ResponseEntity<Object> cadastrarRestaurante(@RequestBody CadastroRestauranteDTO cadastroDTO) {
 		restauranteService.cadastrarRestaurante(cadastroDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
-		// return ResponseEntity.internalServerError().build();
 	}
 	
 	@GetMapping(value = "/{restauranteId}")
@@ -51,7 +51,7 @@ public class RestaurantesController {
 		if (Objects.isNull(restauranteId))
 			return ResponseEntity.badRequest().build();
 			
-		Optional<RestauranteModel> optRestaurante = restauranteService.getRestauranteById(restauranteId);
+		var optRestaurante = restauranteService.getRestauranteById(restauranteId);
 		
 		if (optRestaurante.isPresent())
 			return ResponseEntity.ok(optRestaurante.get());
@@ -60,15 +60,20 @@ public class RestaurantesController {
 	}
 
 	@GetMapping(value = "/{restauranteId}/catalogo")
-	private ResponseEntity<List<ItemRestauranteModel>> getCatalogoRestaurante(@RequestParam Integer restauranteId) {
+	private ResponseEntity<List<ItemCatalogoDTO>> getCatalogoRestaurante(@PathVariable Integer restauranteId) {
 		return ResponseEntity.ok(itemRestauranteService.getCatalogoRestaurante(restauranteId));
-		
 	}
 	
 	@PostMapping(value = "/{restauranteId}/catalogo")
-	private ResponseEntity<List<ItemRestauranteModel>> adicionarItemAoCatalogoDoRestaurante(@RequestParam Integer restauranteId) {
-		return ResponseEntity.ok(itemRestauranteService.getCatalogoRestaurante(restauranteId));
-		
+	private ResponseEntity<ItemRestauranteModel> adicionarItemAoCatalogoDoRestaurante(@PathVariable Integer restauranteId, @RequestBody CadastroItemCatalogoDTO cadastroItemCatalogoDTO) {
+		var itemAdicionado = itemRestauranteService.adicionarItemAoCatalogoDoRestaurante(restauranteId, cadastroItemCatalogoDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body(itemAdicionado);
+	}
+	
+	@DeleteMapping(value = "/{restauranteId}/catalogo/{itemNoCatalogoId}")
+	private ResponseEntity<Object> removerItemDoCatalogoDoRestaurante(@PathVariable Integer restauranteId, @PathVariable Integer itemNoCatalogoId) {
+		itemRestauranteService.removerItemDoCatalogoDoRestaurante(restauranteId, itemNoCatalogoId);
+		return ResponseEntity.status(HttpStatus.OK).body("O item "+itemNoCatalogoId+" foi removido.");
 	}
 	
 }

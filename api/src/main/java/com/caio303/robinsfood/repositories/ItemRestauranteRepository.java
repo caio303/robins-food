@@ -10,7 +10,7 @@ import com.caio303.robinsfood.models.ItemRestauranteModel;
 public interface ItemRestauranteRepository extends JpaRepository<ItemRestauranteModel, Integer> {
 
 	@Query(nativeQuery = true, value = ""
-			+ "SELECT item.* FROM item_restaurante as item"
+			+ "SELECT item.id, item.nome, item.valor, item.detalhes, item.id_restaurante FROM item_restaurante as item"
 			+ "		WHERE item.id_restaurante = (:idRestaurante)")
 	public List<ItemRestauranteModel> findAllByIdRestaurante(Integer idRestaurante);
 	
