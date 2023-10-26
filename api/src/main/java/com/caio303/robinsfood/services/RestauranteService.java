@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.caio303.robinsfood.dtos.CadastroRestauranteDTO;
 import com.caio303.robinsfood.dtos.RestauranteComCatalogoDTO;
 import com.caio303.robinsfood.models.RestauranteModel;
-import com.caio303.robinsfood.repositories.ItemRestauranteRepository;
 import com.caio303.robinsfood.repositories.RestauranteRepository;
 
 @Service
