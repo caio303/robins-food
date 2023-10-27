@@ -6,10 +6,10 @@ import { faPen, faUser } from "../../node_modules/@fortawesome/free-solid-svg-ic
 import { getCepComMascara, getCpfComMascara, getTelefoneComMascara } from "../utils"
 
 export const ConteudoPerfil = () => {
-    const [ usuario, setUsuario ] = useState({nome: '', cpf: '', endereco: '', cep: '', telefone: '', id: -1, email: ''})
+    const [ usuario, setUsuario ] = useState({nome: 'Loading...', cpf: '000.000.000-00', endereco: 'Rua ...', cep: '00000-000', telefone: '(00) 00000-0000', id: -1, email: 'email@email.com'})
 
     useEffect(()=>{
-        setUsuario(api.usuarios.getInfoUsuario())
+        api.usuarios.getInfoUsuario().then(user => setUsuario(user))
     },[])
 
     return (
@@ -17,7 +17,7 @@ export const ConteudoPerfil = () => {
             <div id="conteudo-perfil__painel">
                 <div id="conteudo-perfil__painel__foto"> <FontAwesomeIcon icon={faUser}/> </div>
                 <div id="conteudo-perfil__painel__nome"> { usuario.nome } </div>
-                <div id="conteudo-perfil__painel__editar"> <FontAwesomeIcon icon={faPen}/> </div>
+                <div id="conteudo-perfil__painel__editar" title="Edit action will be available in v2.0"> <FontAwesomeIcon icon={faPen}/> </div>
             </div>
             <div id="conteudo-perfil__dados">
                 <div id="conteudo-perfil__dados__cpf"> 

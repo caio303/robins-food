@@ -8,7 +8,7 @@ export const ConteudoPedidos = () => {
     const [pedidos, setPedidos] = useState([]);
 
     useEffect(() => {
-        setPedidos(api.pedidos.getPedidosDoUsuario())
+        api.pedidos.getPedidosDoUsuario().then(pedidos => setPedidos(pedidos))
     },[])
 
     return (
@@ -18,7 +18,7 @@ export const ConteudoPedidos = () => {
                 <div id="conteudo-pedidos__container__lista-pedidos">
                     {pedidos.map(pedido => (
                         <CardItem
-                            titulo={pedido.restaurante}
+                            titulo={pedido.nomeRestaurante}
                             valor={getValorEmReais(pedido.valorTotal)}
                             subtitulos={[ pedido.enderecoEntrega, pedido.data ]}
                             key={pedido.id} />
