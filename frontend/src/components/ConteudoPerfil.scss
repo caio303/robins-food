@@ -10,7 +10,7 @@
         grid-template: 
             'foto nome nome nome . . editar';
         height: 3rem;
-        width: $card-width;
+        width: $content-width;
 
         &>* {
             align-items: center;
@@ -55,7 +55,7 @@
         gap: .6rem;
         margin-top: 1.5rem;
         padding: $padding-in-footers;
-        width: $card-width;
+        width: $content-width;
 
         span.label {
             color: $cinza1;
