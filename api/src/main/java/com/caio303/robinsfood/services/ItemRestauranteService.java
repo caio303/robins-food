@@ -17,11 +17,8 @@ import com.caio303.robinsfood.repositories.RestauranteRepository;
 @Service
 public class ItemRestauranteService {
 
-	@Autowired
-	private RestauranteRepository restauranteRepository;
-	
-	@Autowired
-	private ItemRestauranteRepository itemRestauranteRepository;
+	@Autowired private RestauranteRepository restauranteRepository;
+	@Autowired private ItemRestauranteRepository itemRestauranteRepository;
 	
 	public List<ItemCatalogoDTO> getCatalogoRestaurante(Integer idRestaurante) {
 		return itemRestauranteRepository.findAllByIdRestaurante(idRestaurante)

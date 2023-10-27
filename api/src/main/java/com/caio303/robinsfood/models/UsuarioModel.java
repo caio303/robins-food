@@ -1,5 +1,7 @@
 package com.caio303.robinsfood.models;
 
+import com.caio303.robinsfood.dtos.UsuarioDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,18 @@ public class UsuarioModel {
 	private String telefone;
 	private String endereco;
 
+	public UsuarioModel() {	super(); }
+
+	public UsuarioModel(UsuarioDTO dto) {
+		this.id = dto.getId();
+		this.nome = dto.getNome();
+		this.cpf = dto.getCpf();
+		this.cep = dto.getCep();
+		this.email = dto.getEmail();
+		this.telefone = dto.getTelefone();
+		this.endereco = dto.getEndereco();
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
@@ -30,7 +44,7 @@ public class UsuarioModel {
 		return nome;
 	}
 
-	@Column(name = "cpf", columnDefinition = "varchar(14)", nullable = false)
+	@Column(name = "cpf", columnDefinition = "varchar(14)", nullable = false, unique = true)
 	public String getCpf() {
 		return cpf;
 	}

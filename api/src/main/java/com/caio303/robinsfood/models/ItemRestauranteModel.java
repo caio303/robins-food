@@ -1,6 +1,7 @@
 package com.caio303.robinsfood.models;
 
 import com.caio303.robinsfood.dtos.CadastroItemCatalogoDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,6 +37,7 @@ public class ItemRestauranteModel {
 		return id;
 	}
 
+	@JsonIgnore
 	@ManyToOne(targetEntity = RestauranteModel.class)
     @JoinColumn(name = "id_restaurante", referencedColumnName = "id", nullable = false)
 	public RestauranteModel getRestaurante() {

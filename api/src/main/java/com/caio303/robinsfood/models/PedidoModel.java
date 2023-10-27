@@ -1,8 +1,13 @@
 package com.caio303.robinsfood.models;
 
-import java.sql.Date;
+
+import java.time.Instant;
+import java.util.Date;
+import java.util.Objects;
 
 import org.springframework.data.annotation.CreatedDate;
+
+import com.caio303.robinsfood.dtos.PedidoDTO;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -25,6 +30,17 @@ public class PedidoModel {
 	private RestauranteModel restaurante;
 	private UsuarioModel cliente;
 	
+	public PedidoModel() { super(); }
+	
+	public PedidoModel(PedidoDTO dto, RestauranteModel restaurante, UsuarioModel usuario) {
+		this.id = dto.getId();
+		this.enderecoEntrega = dto.getEnderecoEntrega();
+		this.data = Objects.nonNull(dto.getData()) ? dto.getData() : Date.from(Instant.now());
+		this.valorTotal = dto.getValorTotal();
+		this.restaurante = restaurante;
+		this.cliente = usuario;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() { return id; }

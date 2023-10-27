@@ -1,6 +1,7 @@
 package com.caio303.robinsfood.models;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,13 +15,25 @@ import jakarta.persistence.Table;
 public class ItemPedidoModel {
 
 	private Integer id;
+	private Integer quantidade;
 	private ItemRestauranteModel item;
 	private PedidoModel pedido;
 
+	public ItemPedidoModel(Integer quantidade, ItemRestauranteModel item, PedidoModel pedido) {
+		this.item = item;
+		this.quantidade = quantidade;
+		this.pedido = pedido;
+	}
+
+	public ItemPedidoModel() { super(); }
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() { return id; }
 
+	@Column(name = "quantidade", nullable = false)
+	public Integer getQuantidade() { return quantidade; }
+	
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = ItemRestauranteModel.class)
     @JoinColumn(name = "id_item", referencedColumnName = "id")
 	public ItemRestauranteModel getItem() {	return item; }
@@ -31,6 +44,9 @@ public class ItemPedidoModel {
 	
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
 	
 	public void setItem(ItemRestauranteModel item) {
