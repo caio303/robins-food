@@ -62,5 +62,7 @@ public class PedidoDTO {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
+	public void setEnderecoEntrega(String enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
+	}
 }

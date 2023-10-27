@@ -11,12 +11,13 @@ import { useSelector } from "../../node_modules/react-redux/es/exports"
 export const HeaderNavegacao = () => {
     const itensNoCarrinho = useSelector(state => state.carrinhoReducers.carrinho.itens)
     const countItensNoCarrinho = ( itensNoCarrinho && itensNoCarrinho.reduce((acc, crr)=> acc + crr.quantidade, 0) ) || 0
+    const semItensNoCarrinho = countItensNoCarrinho < 1
     
     return (
         <header id="header-navegacao">
             <Logo />
-            <Link to={'/carrinho'}>
-                <div className={countItensNoCarrinho > 0 ? 'badge' : ''} title={`${countItensNoCarrinho}`}>
+            <Link to={'/carrinho'} aria-disabled={semItensNoCarrinho}>
+                <div className={!semItensNoCarrinho && 'badge'} title={`${countItensNoCarrinho}`}>
                     <FontAwesomeIcon
                         id="header-navegacao__carrinho"
                         icon={faBasketShopping} />

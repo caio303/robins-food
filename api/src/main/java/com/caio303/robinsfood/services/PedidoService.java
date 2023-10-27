@@ -48,6 +48,9 @@ public class PedidoService {
 		if (optUsuario.isEmpty() || optRestaurante.isEmpty())
 			return Optional.empty();
 		
+		if (Objects.isNull(pedidoParaCadastrar.getEnderecoEntrega()))
+			pedidoParaCadastrar.setEnderecoEntrega(optUsuario.get().getEndereco());
+		
 		var pedidoModel = new PedidoModel(pedidoParaCadastrar, optRestaurante.get(), optUsuario.get());
 		var pedidoCadastrado = pedidoRepository.save(pedidoModel);
 		

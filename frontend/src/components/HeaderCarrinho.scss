@@ -1,15 +1,61 @@
 @import '../variables';
 
-#header-carrinho {    
+#header-carrinho {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
     * {
         z-index: 2;
     }
-
-    &__nome-restaurante {
-        background-color: $verde;
+    
+    &__voltar {
+        aspect-ratio: 1 / 1;
+        background-color: $cinza2;
+        border-radius: 50%;
+        color: $verde;
+        cursor: pointer;
+        font-size: 1.3rem;
+        left: 3%;
+        padding: .7rem;
+        position: absolute;
+        top: 5%;
     }
+
     &__img-restaurante {
-        position: relative;
+        height: 10rem;
+        object-fit: cover;
+        user-select: none;
+        width: 100%;
         z-index: 1;
+    }
+    
+    
+    &__nome-restaurante {
+        display: block;
+        font-size: 1.3rem;
+        font-weight: $font-bold;
+        margin-top: .8rem;
+        width: $content-width;
+    }
+
+    &__dados {
+        align-items: center;
+        display: flex;
+        font-weight: $font-semibold;
+        justify-content: space-evenly;
+        margin-top: .6rem;
+        width: $content-width;
+        
+        &__horario-funcionamento {
+
+        }
+
+        &__taxa-entrega {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
     }
 }

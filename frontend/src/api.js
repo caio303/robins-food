@@ -12,16 +12,16 @@ const config = (() => {
     }
 })()
 
-const axiosConfig = {
+const axiosDefaultConfig = {
     baseURL: config.baseURL
 }
 
 const http = {
-    get: async (endpoint, config = {}) => (
-        await axios.get(endpoint, { ...axiosConfig, ...config }).then(res => res.data)
+    get: async (endpoint, customConfig = {}) => (
+        await axios.get(endpoint, { ...axiosDefaultConfig, ...customConfig }).then(res => res.data)
     ),
-    post: async (endpoint, config = {}) => (
-        await axios.post(endpoint, { ...axiosConfig, ...config }).then(res => res.data)
+    post: async (endpoint, requestBody = {}) => (
+        await axios.post(config.baseURL + endpoint, { ...requestBody }).then(res => res.data)
     ),
 }
 
@@ -61,6 +61,18 @@ export const api = {
     },
 
     pedidos: {
+        fazerPedido: (carrinho, valorTotal, idUsuario = config.idUsuarioPadraoMVP) => {
+            const requestBody = {
+                clienteId: idUsuario,
+                data: new Date().toJSON(),
+                itens: carrinho.itens,
+                restauranteId: carrinho.restaurante.id,
+                valorTotal
+            }
+            console.log(new Date().toJSON())
+            http.post('/pedidos', requestBody)
+        },
+
         getPedidosDoUsuario: (idUsuario = config.idUsuarioPadraoMVP) => (
             http.get('/pedidos', { params: { clienteId: idUsuario }})
         ),

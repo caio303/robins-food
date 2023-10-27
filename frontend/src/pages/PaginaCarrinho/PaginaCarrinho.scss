@@ -1,0 +1,32 @@
+@import '../../variables';
+
+#pagina-carrinho {
+    display: grid;
+    grid-template: 
+        'header'
+        'main'
+        'main'
+        'main'
+        'footer';
+    height: 100vh;
+
+    header[id^=header-] {
+        grid-area: header;
+        height: 28vh;
+    }
+
+    main[id^=conteudo-] {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        grid-area: main;
+        height: 60vh;
+        width: $content-width;
+    }
+
+    footer[id^=footer-] {
+        border-top: 1px solid $cinza3;
+        grid-area: footer;
+        height: 12vh;
+    }
+}
