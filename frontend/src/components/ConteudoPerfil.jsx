@@ -6,7 +6,7 @@ import { faPen, faUser } from "../../node_modules/@fortawesome/free-solid-svg-ic
 import { getCepComMascara, getCpfComMascara, getTelefoneComMascara } from "../utils"
 
 export const ConteudoPerfil = () => {
-    const [ usuario, setUsuario ] = useState({nome: 'Loading...', cpf: '000.000.000-00', endereco: 'Rua ...', cep: '00000-000', telefone: '(00) 00000-0000', id: -1, email: 'email@email.com'})
+    const [ usuario, setUsuario ] = useState({nome: 'Carregando...', cpf: '000.000.000-00', endereco: 'Rua ...', cep: '00000-000', telefone: '(00) 00000-0000', id: -1, email: 'email@email.com'})
 
     useEffect(()=>{
         api.usuarios.getInfoUsuario().then(user => setUsuario(user))
