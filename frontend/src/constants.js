@@ -6,7 +6,7 @@ export const KEY_CARRINHO_LOCAL_STORAGE = 'RB_FOOD_CARRINHO'
 
 export const CONFIGURACOES_PRODUCAO = {
     ambiente: 'prod',
-    baseURL: 'https://robins-foor.onrender.com/',
+    baseURL: 'https://robins-foor.onrender.com',
     idUsuarioPadraoMVP: 1
 }
 
