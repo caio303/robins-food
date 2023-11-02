@@ -30,7 +30,7 @@ export const ConteudoPerfil = () => {
                 <span className="label">Telefone: </span>{ getTelefoneComMascara(usuario.telefone) } 
                 </div>
                 <div id="conteudo-perfil__dados__endereco"> 
-                <span className="label">Endereço: </span>{ usuario.endereco }, { getCepComMascara(usuario.cep) } 
+                <span className="label">Endereço: </span>{ usuario.endereco } - { getCepComMascara(usuario.cep) } 
                 </div>
             </div>
        </main>

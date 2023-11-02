@@ -12,7 +12,7 @@
     
     &__voltar {
         aspect-ratio: 1 / 1;
-        background-color: $cinza2;
+        background-color: $cinza3;
         border-radius: 50%;
         color: $verde;
         cursor: pointer;
@@ -46,6 +46,7 @@
         font-weight: $font-semibold;
         justify-content: space-evenly;
         margin-top: .6rem;
+        text-decoration: underline;
         width: $content-width;
         
         &__horario-funcionamento {
