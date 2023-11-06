@@ -25,3 +25,9 @@ export const getValorEmReais = (valor) => {
         
     return `${valor.toFixed(2)}`.replace('.',',')
 }
+
+export const getDataFormatada = (strData) => {
+    const regex = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}).*/
+    const replace = '$3/$2/$1 $4:$5'
+    return strData.replace(regex,replace)
+}

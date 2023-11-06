@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api";
 import { CardItem } from "./CardItem";
 import './ConteudoPedidos.scss'
-import { getValorEmReais } from "../utils";
+import { getDataFormatada, getValorEmReais } from "../utils";
 import { Link } from "react-router-dom";
 
 export const ConteudoPedidos = () => {
@@ -28,7 +28,7 @@ export const ConteudoPedidos = () => {
                 <CardItem
                     titulo={pedido.nomeRestaurante}
                     valor={getValorEmReais(pedido.valorTotal)}
-                    subtitulos={[ pedido.enderecoEntrega, pedido.data ]}
+                    subtitulos={[ pedido.enderecoEntrega, getDataFormatada(pedido.data) ]}
                     key={pedido.id} />
             ))
     )
