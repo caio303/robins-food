@@ -11,7 +11,6 @@ export const App = () => {
   dispatch(actions.buscarCarrinhoDoLocalStorage())
   window.scrollTo(0, 1);
 
-  console.log(process.env)
   return (
     <MobileContainer>
       <Routes>
