@@ -16,6 +16,12 @@ export const ConteudoPedidos = () => {
             .finally(() => setIsLoading(false))
     },[])
 
+    const getTooltipDoPedido = (itensPedido) => {
+        let tooltip = ''
+        itensPedido.forEach(item => tooltip += `\n${item.quantidade} x ${item.nome}`)
+        return tooltip
+    }
+
     const mostrarConteudo = () => (
         pedidos.length < 1 
             ? (
@@ -29,6 +35,7 @@ export const ConteudoPedidos = () => {
                     titulo={pedido.nomeRestaurante}
                     valor={getValorEmReais(pedido.valorTotal)}
                     subtitulos={[ pedido.enderecoEntrega, getDataFormatada(pedido.data) ]}
+                    title={getTooltipDoPedido(pedido.itens)}
                     key={pedido.id} />
             ))
     )
