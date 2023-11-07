@@ -11,7 +11,7 @@ public interface ItemRestauranteRepository extends JpaRepository<ItemRestaurante
 
 	@Query(nativeQuery = true, value = ""
 			+ "SELECT item.id, item.nome, item.valor, item.detalhes, item.id_restaurante FROM item_restaurante as item"
-			+ "		WHERE item.id_restaurante = (:idRestaurante)")
+			+ "		WHERE item.id_restaurante = (:idRestaurante) ORDER BY id DESC")
 	public List<ItemRestauranteModel> findAllByIdRestaurante(Integer idRestaurante);
 	
 }
