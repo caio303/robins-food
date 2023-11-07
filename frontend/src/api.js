@@ -69,7 +69,7 @@ export const api = {
                 restauranteId: carrinho.restaurante.id,
                 valorTotal
             }
-            http.post('/pedidos', requestBody)
+            return http.post('/pedidos', requestBody)
         },
 
         getPedidosDoUsuario: (idUsuario = config.idUsuarioPadraoMVP) => (

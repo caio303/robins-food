@@ -1,17 +1,12 @@
 import { useDispatch } from "../../node_modules/react-redux/es/exports"
 import { getValorEmReais } from "../utils"
 import { actions as carrinhoActions } from "../actions/carrinho.actions"
-import { Link, useNavigate } from "../../node_modules/react-router-dom/dist/index"
+import { Link } from "../../node_modules/react-router-dom/dist/index"
 import './ConteudoCarrinho.scss'
 
-export const ConteudoCarrinho = ({ itensCarrinho, idRestaurante }) => {
+export const ConteudoCarrinho = ({ itensCarrinho, limparCarrinho }) => {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const removerItemDoCarrinho = (itemId) => dispatch(carrinhoActions.removerItem(itemId))
-    const limparCarrinho = () => {
-        navigate(`/restaurante/${idRestaurante}`)
-        dispatch(carrinhoActions.limparCarrinho())
-    }
 
     return (
         <main id="conteudo-carrinho">

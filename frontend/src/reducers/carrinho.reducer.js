@@ -22,7 +22,7 @@ export const reducers = (state = INITIAL_STATE, action) => {
         case actionTypes.REMOVER_ITEM_CARRINHO:
             return removerItem(state, action.payload)
         case actionTypes.LIMPAR_CARRINHO:
-            return { ...INITIAL_STATE }
+            return limparCarrinho()
         case actionTypes.BUSCAR_LOCAL_STORAGE_CARRINHO:
             return buscarDoLocalStorage()
         default:
@@ -64,6 +64,11 @@ const removerItem = (state, itemId) => {
         )
 
     return atualizarLocalStorageERetornar(novoStateCarrinho)
+}
+
+const limparCarrinho = () => {
+    localStorage.removeItem(KEY_CARRINHO_LOCAL_STORAGE)
+    return { ...INITIAL_STATE }
 }
 
 const buscarDoLocalStorage = () => {
